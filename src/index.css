@@ -1,18 +1,61 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+.chat-container {
+  margin: 20px;
+  height: 550px;
+  width: 600px;
+  overflow: auto;
+  background: whitesmoke;
+  overflow-y: scroll;
+  border-style: solid;
+  border-width: thin;
+  border-color: lightblue;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.chat-window {
+  max-width: 800px;
+  background: whitesmoke;
+  margin: 10px auto;
 }
 
-li {
+.custom-input{
+  margin-left: 20px;
+  padding: 5px 5px;
+  box-sizing: border-box;
+  display: block;
+  width: 90%;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid lightslategray;
+
+}
+
+.custom-input-active{
+  margin-left: 20px;
+  padding: 5px 5px;
+  box-sizing: border-box;
+  display: block;
+  width: 90%;
+  background: white;
+  border: 0;
+  border-bottom: 2px solid dodgerblue;
+ 
+}
+.chat-window input:focus {
+  outline: none;    
+}
+
+.output {
+  margin: 20px 22px;
+  border-bottom: 1px solid #e9e9e9;
+  color: #555;
+
+}
+
+.chat-window li {
   list-style: none;
 }
+
+.chat-window h3 {
+   margin-left: 17px;
+}
+

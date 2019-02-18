@@ -1,7 +1,7 @@
 import { ApiAiClient } from 'api-ai-javascript';
 import { createStore, applyMiddleware } from 'redux';
 
-const accessToken = '0482e1198c69486f8ef1f47f8eb69e18';
+const accessToken = 'abc489a4a2ce4651b5dc670d2f47011b';
 const client = new ApiAiClient({ accessToken });
 const ON_MESSAGE = 'ON_MESSAGE';
 
@@ -19,7 +19,7 @@ const messageMiddleware = () => next => action => {
         client.textRequest(text)
             .then(data => {
                 const { speech } = data.result.fulfillment;
-                next(sendMessage(speech, 'Bot'))
+                next(sendMessage(speech, 'Brianna'))
             });
     }
 
