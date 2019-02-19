@@ -11,18 +11,15 @@ export const sendMessage = (text, sender) => ({
 });
 
 const messageMiddleware = () => next => action => {
-
     next(action);
-
     if (action.type === ON_MESSAGE) {
         const { text } = action.payload;
         client.textRequest(text)
             .then(data => {
                 const { speech } = data.result.fulfillment;
-                next(sendMessage(speech, 'Brianna'))
+                next(sendMessage(speech, 'Alison'));
             });
     }
-
 }
 
 const MessageReduce = (state = [], action) => {

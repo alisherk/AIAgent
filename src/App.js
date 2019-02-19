@@ -14,23 +14,36 @@ class App extends Component {
     inputstyle: true,
   }
 
+  scrollToBottom() {
+
+    //gets a height of the scrollable area inside chat-window div
+    const scrollHeight = this.el.scrollHeight;
+    //gets the height of the viewable portion of the scroll 
+    const clientHeight = this.el.clientHeight;
+    //get a difference between scrollHeight and cleinHeight and set it to maxScrollTop
+    const maxScrollTop = scrollHeight - clientHeight;
+    //assign scrollTop property to the difference between scrollHeight and clientHeight (if > 0 this scrolls down if less remains the same) 
+    this.el.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+  }
+
+  //triger the option above if there is change in components 
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   handleOnKeyDown = (e) => {
     if (e.keyCode === 13) {
-      this.props.sendMessage(e.target.value, 'Me'); 
-      this.input.value = ''; 
-      this.input.placeholder = '';
+      this.props.sendMessage(e.target.value, 'Me');
+      this.input.value = '';
     }
-
   }
 
-  handleMouseEnter = () => {
+  handleFocus = () => {
     this.setState({ inputstyle: false });
   }
-
-  handleMouseLeave = () => {
-    this.setState({ inputstyle: true});
+  handleBlur = () => {
+    this.setState({ inputstyle: true });
   }
-
 
   render() {
     const { feed } = this.props;
@@ -38,23 +51,20 @@ class App extends Component {
     return (
       <div className='container'>
         <div className='row justify-content-center align-items-center'>
-          <div className='col-md-6'>
-            <div className='chat-container'>
-              <div className='chat-window'>
-                <h3 className='text-secondary text-center'> Talk to Alisher's Assistant</h3>
-                <input className={inputstyle} placeholder='Chat with Brianna' ref={input => this.input = input} onKeyDown={this.handleOnKeyDown} onMouseEnter={this.handleMouseEnter}
-                onMouseLeave={this.handleMouseLeave}/> 
-                {feed.map(entry => {
-                  return (
-                    <div className='output'> 
-                    <span key={Math.random()}>
-                      <p className='text-secondary'> {entry.text} - <span style={style}>{entry.sender}</span> </p>
-                    </span>
-                    </div> 
-                  )
-                })}
-              </div>
+          <div className='col-xs-12 col-md-6'>
+            <h4 className='text-secondary text-center'> Chat to Alisher's Agent</h4>
+            <div className='chat-container' ref={el => this.el = el}>
+              {feed.map(entry => {
+                return (
+                  <span key={Math.random()}>
+                    <p className='output text-secondary'> {entry.text} - <span style={style}>{entry.sender}</span> </p>
+                  </span>
+                );
+              })}
+
             </div>
+            <input className={inputstyle} placeholder='Chat now' ref={input => this.input = input} onKeyDown={this.handleOnKeyDown} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+
           </div>
         </div>
       </div>
