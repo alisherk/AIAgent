@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## From Developer 
+
+Make sure you run npm install to get all the dependepcies in the package.json. The app uses api-ai-javascript to communicate with the DialogFlow, a Google's ML model. 
+
+## DialogFlow
+You can set up and train your own DialogFlow ML Modal from https://dialogflow.com/
+If you choose to connect to app to your own modal, make sure to replace  AccessToken with your own in chat.js file 
+
 ## Available Scripts
 
 In the project directory, you can run:

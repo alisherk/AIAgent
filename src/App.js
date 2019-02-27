@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { sendMessage } from './chat';
 
 
+
 const style = {
   color: 'blue',
 }
@@ -49,7 +50,7 @@ class App extends Component {
     const { feed } = this.props;
     const inputstyle = this.state.inputstyle ? 'custom-input' : 'custom-input-active';
     return (
-      <div className='container'>
+      <div className='container custom-box'>
         <div className='row justify-content-center align-items-center'>
           <div className='col-xs-12 col-md-6'>
             <h4 className='text-secondary text-center'> Chat to Alisher's Agent</h4>
@@ -67,7 +68,8 @@ class App extends Component {
 
           </div>
         </div>
-      </div>
+      </div> 
+     
     );
   }
 }
