@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { sendMessage } from './chat';
 
 
-
 const style = {
   color: 'blue',
 }
